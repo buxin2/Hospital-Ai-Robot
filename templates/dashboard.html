@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Patient Dashboard</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+  <style>
+    img.patient-photo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🩺 Patient Dashboard</h1>
+
+    <div class="top-bar">
+      <input type="text" id="searchInput" placeholder="🔍 Search by name, age, or complaint..." />
+      <button class="btn export-btn" onclick="exportCSV()">⬇️ Export to CSV</button>
+    </div>
+
+    <div class="table-container">
+      <table id="patientTable">
+        <thead>
+          <tr>
+            <th>Photo</th> <!-- 🆕 New column -->
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Contact</th>
+            <th>Address</th>
+            <th>Chief Complaint</th>
+            <th>Pain Level</th>
+            <th>Pain Description</th>
+            <th>Additional Symptoms</th>
+            <th>Medical History</th>
+            <th>Emergency Name</th>
+            <th>Relation</th>
+            <th>Gender</th>
+            <th>Contact</th>
+            <th>Address</th>
+            <th>Heart Rate</th>
+            <th>SpO₂</th>
+            <th>Body Temp (°F)</th>
+            <th>Env Temp (°F)</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

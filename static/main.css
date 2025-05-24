@@ -1,0 +1,275 @@
+body {
+    background-color: #f9f9f9; /* Soft clean background */
+}
+
+/* Default Desktop Styles */
+div.Records {
+    background-color: #2a9d8f; /* Cool teal */
+    width: 36%;
+    float: left;
+    height: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+}
+
+/* Title */
+h1 {
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-size: 28px;
+    text-align: center;
+}
+
+/* Containers */
+.personal-information,
+.medical-history,
+.emergency-contact {
+    background-color: #e0f2f1; /* Soft blue-gray */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    margin: 20px auto;
+    width: 90%;
+    text-align: left;
+}
+
+/* Section Titles */
+.personal-information h2,
+.medical-history h2,
+.emergency-contact h2 {
+    color: #ffffff;
+    background-color: #264653; /* Modern navy */
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+/* Personal Details */
+.personal {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333; /* Neutral text */
+}
+
+/* Profile Image */
+.img {
+    float: right;
+    margin-left: 20px;
+    margin-top: -200px;
+}
+
+.img img {
+    width: 120px;
+    height: 120px;
+    border-radius: 10%;
+    border: 2px solid #ccc;
+    object-fit: cover;
+}
+
+/* second page...................................................................................................... */
+div.Display {
+    background-color: #ffffff;
+    width:94%;
+    height: 260px;
+    border-radius: 10px 10px 0px 0px;
+    padding: 10px;
+    margin-left: 4px;
+    color: #333;
+    font-size: large;
+    overflow-y: auto;
+    scrollbar-width: thin; /* Firefox */
+}
+
+/* Custom scrollbar for Webkit browsers */
+div.Display::-webkit-scrollbar {
+    width: 6px;
+}
+div.Display::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+div.Display::-webkit-scrollbar-thumb {
+    background: #b0bec5;
+    border-radius: 3px;
+}
+div.Display::-webkit-scrollbar-thumb:hover {
+    background: #90a4ae;
+}
+
+#output {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+    line-height: 1.5;
+}
+
+div.text {
+    background-color: #ffffff;
+    width:94%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 0px 0px 10px 10px;
+    margin-left: 4px;
+}
+
+div.text i {
+    font-size: xx-large;
+    color: #2a9d8f;
+}
+
+div.text input {
+    width:88%;
+    padding-top: 10px;
+    font-size: large;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+div.Sensors {
+    background-color: #2a9d8f;
+    width: 60%;
+    float: right;
+    height: 130%;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+}
+
+button {
+    padding: 5px 8px;
+    font-size: xx-large;
+    background: #43aa8b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 23%;
+}
+button:hover {
+    background: #2a9d8f;
+}
+
+div.Bloood,
+div.Heart,
+div.sensor-chart,
+div.body_tm,
+div.env_tem {
+    width: 45%;
+    background-color: #ffffff;
+    float: left;
+    border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #2a9d8f;
+}
+
+div.Bloood img,
+div.Heart img,
+div.body_tm img,
+div.env_tem img {
+    width: 100%;
+    height: 163px;
+    border-radius: 8px;
+}
+
+div.sensor {
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center;     /* Centers content vertically */
+    gap: 10px;               /* Optional: space between <p> and <h1> */
+    cursor: pointer;
+}
+
+div.sensor p {
+    background-color: white;
+    padding: 5px 10px; /* Optional: adds spacing inside the <p> */
+    border-radius: 4px; /* Optional: rounded corners */
+    color: #000;
+}
+
+div.sender  button{
+    font-size: 15px;
+    float: left;
+    margin-left: 10px;
+    padding: 5px 5px;
+    margin: 5px;
+}
+
+/* MOBILE LANDSCAPE MODE */
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+
+    div.Sensors {
+        background-color: #2a9d8f;
+        width: 57%;
+        float: right;
+        height: 100%;
+    }
+
+
+    div.Display {
+        width: 90%;
+        height: 90px;
+        overflow-y: auto;
+    }
+
+    div.text {
+        width: 90%;
+        height: 40px;
+    }
+
+    div.text input {
+        width: 65%;
+    }
+
+    div.Bloood,
+    div.Heart,
+    div.body_tm,
+    div.env_tem {
+        width: 42%;
+        margin-left: 1%;
+    }
+
+    div.Bloood img,
+    div.Heart img,
+    div.body_tm img,
+    div.env_tem img {
+        width: 100%;
+        height: 100%;
+    }
+
+    div.Bloood p,
+    div.Heart p,
+    div.body_tm p,
+    div.env_tem {
+        font-size: small;
+    }
+
+    button {
+        width: auto;
+        font-size: x-small;
+        background: #43aa8b;
+    }
+    h1{
+        font-size: large;
+    }
+    div.Records{
+        padding-right: 2.5%;
+    }
+
+    .img img {
+        width: 80px;
+        height: 80px;
+        border-radius: 10%;
+        border: 2px solid #ccc;
+        object-fit: cover;
+
+}
+}

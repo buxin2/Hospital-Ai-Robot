@@ -1,0 +1,118 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="Records" id="registration">
+        <h1>🤖🩺 Patient Records 🩺🤖</h1>
+        <div class="personal-information">
+          <h2>🧍‍♂️ Personal Information</h2>
+          <div class="personal">
+            <p>🧑‍💼 Full Name: <span id="name"></span></p>
+            <p>🎂 Age: <span id="age"></span></p>
+            <p>🚻 Gender: <span id="gender"></span></p>
+            <p>📞 Contact: <span id="contact"></span></p>
+            <p>🏠 Address: <span id="address"></span></p>
+          </div>
+      
+          <div class="img">
+            <img src="{{ url_for('video_feed') }}" onclick="start()" alt="Live Video Feed" width="320"style="cursor: pointer;">
+          </div>
+        </div>
+      
+        <div class="medical-history">
+          <h2>🩺 Medical History</h2>
+          <div class="personal">
+            <p>😷 Chief Complaint: <span id="chiefComplaint"></span></p>
+            <p>📊 Pain Level: <span id="painLevel"></span></p>
+            <p>✍️ Pain Description: <span id="painDescription"></span></p>
+            <p>🤒 Additional Symptoms: <span id="additionalSymptoms"></span></p>
+            <p>📝 Medical History: <span id="medicalHistory"></span></p>
+          </div>
+        </div>
+      
+        <div class="emergency-contact">
+          <h2>🚨 Emergency Contact</h2>
+          <div class="personal">
+            <p>👤 Full Name: <span id="emergencyName"></span></p>
+            <p>🧑‍🤝‍🧑 Relation: <span id="emergencyRelation"></span></p>
+            <p>🚻 Gender: <span id="emergencyGender"></span></p>
+            <p>📞 Contact: <span id="emergencyContact"></span></p>
+            <p>🏘️ Address: <span id="emergencyAddress"></span></p>
+          </div>
+        </div>
+      </div>
+      
+    <!-- Sensor Section -->
+    <div class="Sensors">
+        <div class="sensor">
+          <p>Red: <span id="red">--</span>  </p>
+          <h1 onclick="fetchSensorData()">🔄Senor Data's 🩺</h1>
+          <p>Ir: <span id="ir">--</span> </p>
+        </div>
+    
+        <div class="Heart">
+            <p class="sensor-data">❤️ Heart Rate: <span id="heart_rate">--</span> BPM</p>
+            <img id="hr_graph" src="" alt="Heart Rate Graph" width="600">
+        </div>
+
+        <div class="Bloood">
+          <p class="sensor-data">🩸 spo2: <span id="blood_pressure">--</span></p>
+          <img id="bp_graph" src="" alt="Blood Pressure Graph" width="600">
+        </div>
+    
+        <div class="body_tm">
+            <p class="sensor-data">🌡️ Body Tem: <span id="body_temperature">--</span> °C</p>
+            <img id="bt_graph" src="" alt="Body Temperature Graph" width="600">
+        </div>
+    
+        <div class="env_tem">
+            <p class="sensor-data">☀️ Env Temp: <span id="environment_temperature">--</span> °C</p>
+            <img id="et_graph" src="" alt="Environment Temperature Graph" width="600">
+        </div>
+    
+        <!-- AI Chat -->
+        <div class="chart">
+            <h1>🧠💬 Medical ChatBot</h1>
+            <div class="Display">
+                <p id="output">Ask Me Anything</p>
+            </div>
+            <div class="text">
+                <i class="fas fa-microphone icon" id="micButton" onclick="sendVoice()"></i>
+                <input id="text" class="my-input" placeholder="Enter text">
+                <i class="fas fa-paper-plane icon" onclick="sendText()"></i>
+                <i class="fas fa-play-circle icon" onclick="stopSpeaking()"></i>
+            </div>
+        </div>
+    
+        <!-- Robot Delivery -->
+        <div class="sender">
+            <h1 >🚑 Robot Sender Zones 🤖</h1>
+            <button>🩺 Consultation Rooms</button>
+            <button>💊 Pharmacy</button>
+            <button>🧪 Laboratory</button>
+            <button>🛏️ Patient Wards</button>
+            <button>🖼️ X-Ray/MRI</button>
+            <button>🧑‍⚕️ Staff Room</button>
+            <button>🚨 Emergency Room</button>
+            <button>👩‍⚕️ Nurse Station</button>
+            <button>🧾 Reception</button>
+            <button>🔬 Operation Theat</button>
+            <button onclick="window.location.href='{{ url_for('dashboard') }}'"> Patient Dashboard </button>
+            <button onclick="window.location.href='{{ url_for('printing') }}'"> Patient Dashboard </button>
+            
+        </div>
+    </div>
+
+    <!-- JavaScript File -->
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <script>
+      
+    </script>
+</body>
+</html>

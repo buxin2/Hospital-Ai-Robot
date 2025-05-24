@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Healthcare Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            text-align: center;
+            padding: 30px;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        input {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: 250px;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+        .summary {
+            margin-top: 30px;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .summary-box {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h2>Healthcare Center Registration</h2>
+
+    {% if message %}
+        <p class="success">{{ message }}</p>
+    {% endif %}
+
+    <form method="POST" action="/register">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="text" name="age" placeholder="Age" required>
+        <input type="text" name="gender" placeholder="Gender" required>
+        <input type="text" name="contact" placeholder="Contact Number" required>
+        <input type="text" name="address" placeholder="Home Address" required>
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if conversations %}
+        <div class="summary">
+            <h3>📝 Conversation Summaries</h3>
+            {% for convo in conversations %}
+                <div class="summary-box">
+                    <strong>{{ convo.Timestamp }}</strong><br>
+                    👤 Name: {{ convo.Name }}<br>
+                    🎂 Age: {{ convo.Age }}<br>
+                    🚻 Gender: {{ convo.Gender }}<br>
+                    📞 Contact: {{ convo.Contact }}<br>
+                    🏠 Address: {{ convo.Address }}<br>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</body>
+</html>

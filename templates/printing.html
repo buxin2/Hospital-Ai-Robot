@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='printing.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="Records" id="registration">
+    <div class="headimg">
+    <img src="{{ url_for('static', filename='image.png') }}" onclick="printPage()" alt="Health Assistant Logo">
+  </div>
+    <!-- Personal Information -->
+    <div class="personal-information">
+      <h2>🧍‍♂️ Personal Information</h2>
+      <div class="personal">
+        <div class="line-group">
+          <p>🧑‍💼 Full Name: <span id="name"></span></p>
+          <p>🏠 Address: <span id="address"></span></p>
+        </div>
+        <div class="line-group">
+          <p>🎂 Age: <span id="age"></span></p>
+          <p>🚻 Gender: <span id="gender"></span></p>
+          <p>📞 Contact: <span id="contact"></span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Medical History -->
+    <div class="medical-history">
+      <h2>🩺 Medical History</h2>
+      <div class="personal">
+        <p>😷 Chief Complaint: <span id="chiefComplaint"></span></p>
+        <p>📊 Pain Level: <span id="painLevel"></span></p>
+        <p>✍️ Pain Description: <span id="painDescription"></span></p>
+        <p>🤒 Additional Symptoms: <span id="additionalSymptoms"></span></p>
+        <p>📝 Medical History: <span id="medicalHistory"></span></p>
+      </div>
+    </div>
+
+    <!-- Emergency Contact -->
+    <div class="emergency-contact">
+      <h2>🚨 Emergency Contact</h2>
+      <div class="personal">
+        <div class="line-group">
+          <p>👤 Full Name: <span id="emergencyName"></span></p>
+          <p>🏘️ Address: <span id="emergencyAddress"></span></p>
+        </div>
+        <div class="line-group">
+          <p>🧑‍🤝‍🧑 Relation: <span id="emergencyRelation"></span></p>
+          <p>🚻 Gender: <span id="emergencyGender"></span></p>
+          <p>📞 Contact: <span id="emergencyContact"></span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sensor Section -->
+    <div class="Sensors">
+      <div class="img">
+        <img src="{{ url_for('video_feed') }}" onclick="start()" alt="Live Video Feed" width="320">
+      </div>
+      <div class="Heart">
+        <p class="sensor-data">❤️Heart Rate</p>
+        <h2><span id="heart_rate">--</span> BPM</h2>
+      </div>
+      <div class="body_tm">
+        <p class="sensor-data">🌡️ Body Tem:</p>
+        <h2><span id="body_temperature">--</span> °C</h2>
+      </div>
+      <div class="env_tem">
+        <p class="sensor-data">☀️ Env Temp:</p>
+        <h2><span id="environment_temperature">--</span> °C</h2>
+      </div>
+      <div class="Bloood">
+        <p class="sensor-data">🩸 Blood Pre:</p>
+        <h2><span id="blood_pressure">--</span></h2>
+      </div>
+    </div>
+
+    <!-- Doctors / Prescribe Section -->
+    <div class="Doctors">
+      <h2>🚨 Prescribe Medicine </h2>
+      <div class="Display">
+        <p id="output">Ask Me Anything</p>
+      </div>
+      <div class="text">
+        <i class="fas fa-microphone icon"></i>
+        <input id="text" class="my-input" placeholder="Enter text">
+        <i class="fas fa-paper-plane icon"></i>
+      </div>
+    </div>
+
+
+    <!-- JavaScript File -->
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <script>
+      // Get patient ID from query string
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+  
+      // Fetch patient data from the backend
+      fetch(`/get_patient/${id}`)
+        .then(response => {
+          if (!response.ok) throw new Error("Failed to fetch patient");
+          return response.json();
+        })
+        .then(data => {
+          // Fill spans with data
+          document.getElementById("name").innerText = data.name || '';
+          document.getElementById("age").innerText = data.age || '';
+          document.getElementById("gender").innerText = data.gender || '';
+          document.getElementById("contact").innerText = data.contact || '';
+          document.getElementById("address").innerText = data.address || '';
+          document.getElementById("chiefComplaint").innerText = data.chiefComplaint || '';
+          document.getElementById("painLevel").innerText = data.painLevel || '';
+          document.getElementById("painDescription").innerText = data.painDescription || '';
+          document.getElementById("additionalSymptoms").innerText = data.additionalSymptoms || '';
+          document.getElementById("medicalHistory").innerText = data.medicalHistory || '';
+          document.getElementById("emergencyName").innerText = data.emergencyName || '';
+          document.getElementById("emergencyRelation").innerText = data.emergencyRelation || '';
+          document.getElementById("emergencyContact").innerText = data.emergencyContact || '';
+        })
+        .catch(err => {
+          console.error("Error:", err);
+          document.getElementById("patient-info").innerText = "Error loading data.";
+        });
+    </script>
+  </div>
+</body>
+</html>
